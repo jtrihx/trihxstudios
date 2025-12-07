@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jaden Studios — Graphic/Gaming design by Jaden Lyle">
+  <title>Home · Jaden Studios</title>
+  <!-- one shared stylesheet for the whole site -->
+  <link rel="stylesheet" href="css/site.css">
+  <!-- tiny js file (back-to-top). defer so the page draws first -->
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- header is reused on all pages; overlay style only on home -->
+  <header class="header header--overlay">
+    <a class="logo" href="index.html">JADEN<br>STUDIOS</a>
+    <nav class="nav">
+      <a href="index.html" aria-current="page">HOME</a>
+      <a href="portfolio.html">PORTFOLIO</a>
+      <a href="services.html">SERVICES</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- HERO: keeping the orange/blue photo up top on purpose -->
+    <section class="hero-bleed" aria-label="Hero">
+      <img src="images/hero.jpg" alt="Abstract orange and blue background" class="hero-img">
+      <div class="hero-center">
+        <h1 class="serif title-stack">
+          <span>JADEN</span>
+          <span class="thin">STUDIOS</span>
+        </h1>
+        <p class="sub serif">GRAPHIC DESIGN · GAMING · SPORTS</p>
+      </div>
+    </section>
+
+    <!-- quick intro + three small stat tiles -->
+    <section class="section intro">
+      <div class="eyebrow"><em>01</em></div>
+      <h2 class="headline serif">CREATIVE ART DIRECTION <span>&</span> BRAND</h2>
+      <p class="lede smallcaps">WHITE / ORANGE / LIGHT-BLUE — CLEAN TYPE, BREATHY NEGATIVE SPACE, COMP-READY GRAPHICS.</p>
+
+      <div class="tiles">
+        <div class="tile"><div class="numbig">12</div><div class="label">PROJECTS</div></div>
+        <div class="tile"><div class="numbig">86</div><div class="label">CLIENTS</div></div>
+        <div class="tile"><div class="numbig">320+</div><div class="label">EDITS</div></div>
+      </div>
+    </section>
+
+    <!-- five-up teaser row just to add motion/variety -->
+    <div class="five">
+      <figure><img src="images/59_pg.png" alt="Work sample"><figcaption>CASE 01</figcaption></figure>
+      <figure><img src="images/1666554300894.jpg" alt="Work sample"><figcaption>CASE 02</figcaption></figure>
+      <figure><img src="images/gixnano_finished.png" alt="Work sample"><figcaption>CASE 03</figcaption></figure>
+      <figure><img src="images/ezgif-5f23e06cd34955.png" alt="Work sample"><figcaption>CASE 04</figcaption></figure>
+      <figure><img src="images/eagle_usa.png" alt="Work sample"><figcaption>CASE 05</figcaption></figure>
+    </div>
+
+    <!-- split: text left / image right (pure CSS grid) -->
+    <section class="section split">
+      <div class="text">
+        <div class="eyebrow"><em>02</em></div>
+        <h3 class="serif narrow">DIGITAL ART <span>&</span> VISUAL DESIGN</h3>
+        <p class="fine">ELEGANT GRIDS + GAME ENERGY. TYPE FIRST. COLOR SECOND. SILHOUETTE ALWAYS.</p>
+      </div>
+      <figure>
+        <img src="images/59_pg.png" alt="Portrait comp">
+      </figure>
+    </section>
+
+    <!-- small visual break / divider -->
+    <section class="image-band" aria-label="Brand link">
+      <div class="overline smallcaps">WWW.JADENSTUDIOS.COM</div>
+    </section>
+
+    <!-- REEL: using my own MP4 instead of an embed.
+         Wrapper keeps a 16:9 space; the video covers the box. -->
+    <section class="block center section">
+      <div class="eyebrow"><em>03</em></div>
+      <h3 class="serif narrow">REEL</h3>
+      <div class="video-wrap">
+        <!-- autoplay + muted lets it start right away on most browsers -->
+        <video title="Portfolio Reel" src="video.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Jaden Lyle — Portfolio</p>
+  </footer>
+
+  <!-- back-to-top button lives on every page -->
+  <button id="scrollTopBtn" aria-label="Scroll to top" title="Back to top">↑</button>
+</body>
+</html>
