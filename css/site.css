@@ -1,22 +1,22 @@
-/* Site styles for my web design project.
-   Notes to self: keep it simple, readable, and consistent.
-   Sections below: header, hero, sections/typography, tiles + grids,
-   gallery, about, contact form, footer, small JS button, and a basic media query. */
+/* notes to self:
+   - keeping spacing consistent
+   - colors from my palette
+   - comments are short and to the point
+*/
 
-/* ---------------- Header (logo + nav) ---------------- */
+/* base layout */
 :root{
-  /* basic colors + sizes I keep reusing */
   --ink:#111;
   --muted:#6b6b6b;
   --line:#ebebeb;
   --accent-blue:#4fc3f7;
   --accent-orange:#ff8a3d;
   --max:1200px;
-  --space:clamp(16px,3vw,28px); /* scales a bit on small/large screens */
+  --space:clamp(16px,3vw,28px); /* spacing scales a bit */
 }
 
 *{ box-sizing:border-box }
-html{ scroll-behavior:smooth } /* smooth jump for the back-to-top button */
+html{ scroll-behavior:smooth }
 body{
   margin:0;
   color:var(--ink);
@@ -25,7 +25,7 @@ body{
 }
 a{ color:inherit; text-decoration:none }
 
-/* base header used on most pages */
+/* header + nav */
 .header{
   max-width:var(--max);
   margin:auto;
@@ -34,16 +34,13 @@ a{ color:inherit; text-decoration:none }
   justify-content:space-between;
   align-items:flex-start;
   border-bottom:1px solid var(--line);
-  color:var(--ink);
   background:#fff;
-  position:relative;
 }
 .logo{ font-weight:800; line-height:.9 }
 .nav a{ margin-left:16px; font-weight:800; letter-spacing:.1em }
-/* underline the current page */
 .nav a[aria-current="page"]{ border-bottom:2px solid var(--ink) }
 
-/* header style ONLY on the home page (sits over the hero image) */
+/* overlay version for the homepage */
 .header--overlay{
   position:absolute; top:0; left:0; right:0;
   background:transparent; border-bottom:none;
@@ -53,171 +50,90 @@ a{ color:inherit; text-decoration:none }
 .header--overlay .nav a{ color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.6); border-bottom:none }
 .header--overlay .nav a[aria-current="page"]{ border-bottom:2px solid #fff }
 
-/* ---------------- Hero (full screen image + centered text) ---------------- */
+/* hero (full-screen image + centered text) */
 .hero-bleed{
   position:relative;
   width:100%;
-  height:100vh;           /* make it fill one screen */
-  min-height:520px;       /* but not too tiny on short screens */
-  border-bottom:1px solid var(--line);
-  display:grid;
-  place-items:center;
+  height:100vh;
+  min-height:520px;
+  display:grid; place-items:center;
   overflow:hidden;
+  border-bottom:1px solid var(--line);
 }
-.hero-img{
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  object-fit:cover;       /* keep the image covering the area */
-}
-/* light darkening so white text reads */
-.hero-bleed::after{
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.25));
-}
+.hero-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
+/* slight dark layer so the white text reads better */
+.hero-bleed::after{ content:""; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.25)) }
 .hero-center{ position:relative; text-align:center; color:#fff; text-shadow:0 2px 12px rgba(0,0,0,.45) }
 .serif{ font-family: Georgia, 'Times New Roman', Times, serif }
 .title-stack{ font-size:clamp(38px,8vw,96px); text-transform:uppercase; letter-spacing:.05em; margin:0 }
 .title-stack .thin{ font-weight:400 }
 .sub{ margin:.5rem 0 0; letter-spacing:.2em; font-weight:700 }
 
-/* ---------------- Sections + type helpers ---------------- */
+/* sections + type */
 .section{ max-width:var(--max); margin:70px auto; padding:0 var(--space) }
 .eyebrow{ font-size:clamp(36px,6vw,66px); font-weight:700 }
-.headline{
-  font-size:clamp(28px,4vw,58px);
-  letter-spacing:.12em;
-  padding-bottom:8px;
-  position:relative;
-}
-/* small accent line under some headings */
-.headline:after{
-  content:""; position:absolute; left:0; bottom:0;
-  width:80px; height:3px;
-  background:linear-gradient(90deg, var(--accent-orange), var(--accent-blue));
-}
+.headline{ font-size:clamp(28px,4vw,58px); letter-spacing:.12em; padding-bottom:8px; position:relative }
+.headline:after{ content:""; position:absolute; left:0; bottom:0; width:80px; height:3px; background:linear-gradient(90deg, var(--accent-orange), var(--accent-blue)) }
 .smallcaps{ text-transform:uppercase; letter-spacing:.25em; font-weight:800; font-size:.9rem }
 .lede{ max-width:900px; color:#333; margin:12px 0 18px }
 .fine{ color:var(--muted); font-style:italic }
 .narrow{ letter-spacing:.15em }
 
-/* ---------------- Simple stats tiles under the intro ---------------- */
-.tiles{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-  margin-top:14px;
-}
+/* three tiny stat tiles */
+.tiles{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px }
 .tile{ border:1px solid var(--line); padding:16px; display:grid; place-items:center }
 .numbig{ font-size:2rem; font-weight:800 }
 .label{ letter-spacing:.2em; font-weight:700 }
 
-/* ---------------- Five-image teaser row ---------------- */
-.five{
-  display:grid; grid-template-columns:repeat(5,1fr);
-  gap:14px; max-width:var(--max); margin:20px auto; padding:0 var(--space);
-}
+/* five image teaser */
+.five{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px; max-width:var(--max); margin:20px auto; padding:0 var(--space) }
 .five figure{ position:relative; margin:0; border:1px solid var(--line) }
 .five img{ display:block; width:100%; height:220px; object-fit:cover }
-.five figcaption{
-  position:absolute; inset:auto 0 14px 0;
-  text-align:center; color:#fff;
-  text-shadow:0 2px 8px rgba(0,0,0,.6);
-  letter-spacing:.3em; font-weight:700;
-}
+.five figcaption{ position:absolute; inset:auto 0 14px 0; text-align:center; color:#fff; text-shadow:0 2px 8px rgba(0,0,0,.6); letter-spacing:.3em; font-weight:700 }
 
-/* ---------------- Split section (text left, image right) ---------------- */
-.split{
-  display:grid; grid-template-columns:1.1fr .9fr;
-  gap:30px; align-items:center;
-  border-top:1px solid var(--line); padding-top:30px;
-}
+/* split section */
+.split{ display:grid; grid-template-columns:1.1fr .9fr; gap:30px; align-items:center; border-top:1px solid var(--line); padding-top:30px }
 .split img{ width:100%; display:block; border:1px solid var(--line) }
 
-/* ---------------- Thin brand strip ---------------- */
-.image-band{
-  height:320px; margin:70px 0;
-  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-  display:grid; place-items:center;
-  background:linear-gradient(90deg, rgba(79,195,247,.1), rgba(255,138,61,.1));
-}
+/* thin brand strip */
+.image-band{ height:320px; margin:70px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); display:grid; place-items:center; background:linear-gradient(90deg, rgba(79,195,247,.1), rgba(255,138,61,.1)) }
 .overline{ background:#000; color:#fff; padding:10px 16px; letter-spacing:.3em; font-weight:800 }
 
-/* ---------------- Video embed (16:9) ---------------- */
+/* video section (reel) — 16:9 wrapper + the video fills it */
 .video-wrap{ position:relative; padding-top:56.25%; border:1px solid var(--line) }
-.video-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
+/* make sure the video actually fills the box */
+.video-wrap > video{ position:absolute; inset:0; width:100%; height:100%; display:block; object-fit:cover; background:#000; border:0 }
 
-/* ---------------- Portfolio grid ---------------- */
-.gallery{
-  display:grid; gap:18px;
-  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-  margin-top:20px;
-}
+/* gallery grid (portfolio) */
+.gallery{ display:grid; gap:18px; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); margin-top:20px }
 .gallery figure{ margin:0; border:1px solid var(--line) }
 .gallery img{ width:100%; display:block; aspect-ratio:16/9; object-fit:cover }
 .gallery figcaption{ padding:10px; font-weight:800; letter-spacing:.15em }
 
-/* ---------------- Services list ---------------- */
+/* services + about */
 .service-list{ line-height:2; margin-top:10px }
-
-/* ---------------- About page layout ---------------- */
-.about-grid{
-  display:grid; grid-template-columns:1.1fr .9fr;
-  gap:24px; align-items:start;
-}
+.about-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:start }
 .about-grid img{ width:100%; display:block; border:1px solid var(--line) }
 .micro{ font-size:.95rem; color:#333; line-height:1.6 }
 
-/* ---------------- Contact form ---------------- */
+/* contact form */
 .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px }
 .contact-form label{ font-weight:800; letter-spacing:.2em }
-/* simple underline inputs (keeps the layout clean) */
-.contact-form input,
-.contact-form textarea{
-  width:100%; border:none; border-bottom:1px solid var(--ink);
-  padding:10px 6px; margin-bottom:12px; font:inherit;
-}
-.btn{
-  display:inline-block; border:2px solid var(--ink);
-  padding:10px 18px; text-decoration:none;
-  font-weight:800; letter-spacing:.08em; border-radius:999px;
-  cursor:pointer;
-}
+/* underline style inputs */
+.contact-form input, .contact-form textarea{ width:100%; border:none; border-bottom:1px solid var(--ink); padding:10px 6px; margin-bottom:12px; font:inherit }
+.btn{ display:inline-block; border:2px solid var(--ink); padding:10px 18px; text-decoration:none; font-weight:800; letter-spacing:.08em; border-radius:999px; cursor:pointer }
 .btn:hover{ background:var(--ink); color:#fff }
 
-/* ---------------- Footer ---------------- */
-.footer{
-  max-width:var(--max); margin:auto;
-  padding:30px var(--space);
-  border-top:1px solid var(--line);
-  color:#666;
-}
+/* footer */
+.footer{ max-width:var(--max); margin:auto; padding:30px var(--space); border-top:1px solid var(--line); color:#666 }
 
-/* ---------------- Small JS button (bonus feature) ---------------- */
-/* shows when user scrolls and takes them back to the top */
-#scrollTopBtn{
-  position:fixed; right:16px; bottom:16px;
-  display:none;
-  border:2px solid var(--ink);
-  background:#fff;
-  padding:10px 14px;
-  border-radius:10px;
-  font-weight:800;
-  cursor:pointer;
-  box-shadow:0 4px 12px rgba(0,0,0,.12);
-}
+/* scroll-to-top button */
+#scrollTopBtn{ position:fixed; right:16px; bottom:16px; display:none; border:2px solid var(--ink); background:#fff; padding:10px 14px; border-radius:10px; font-weight:800; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,.12) }
 
-/* keyboard focus outlines so it’s easier to navigate without a mouse */
-.nav a:focus-visible,
-.contact-form input:focus-visible,
-.contact-form textarea:focus-visible,
-.btn:focus-visible,
-#scrollTopBtn:focus-visible{
-  outline:2px dashed currentColor;
-  outline-offset:4px;
-}
+/* keyboard focus outlines */
+.nav a:focus-visible, .contact-form input:focus-visible, .contact-form textarea:focus-visible, .btn:focus-visible, #scrollTopBtn:focus-visible{ outline:2px dashed currentColor; outline-offset:4px }
 
-/* ---------------- Basic responsive tweaks ---------------- */
-/* stacks multi-column areas on smaller screens */
+/* responsive tweaks */
 @media (max-width:980px){
   .tiles{ grid-template-columns:1fr }
   .five{ grid-template-columns:repeat(2,1fr) }
